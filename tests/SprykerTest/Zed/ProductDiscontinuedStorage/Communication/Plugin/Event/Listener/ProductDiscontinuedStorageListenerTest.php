@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\ProductDiscontinuedStorage\Communication\Plugin\Event\Listener;
+namespace SprykerTest\Zed\ProductAlternativeStorage\Communication\Plugin\Event\Listener;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\EventEntityTransfer;
@@ -21,7 +21,7 @@ use Spryker\Zed\ProductDiscontinuedStorage\Persistence\ProductDiscontinuedStorag
  * Auto-generated group annotations
  * @group SprykerTest
  * @group Zed
- * @group ProductDiscontinuedStorage
+ * @group ProductAlternativeStorage
  * @group Communication
  * @group Plugin
  * @group Event
@@ -32,7 +32,7 @@ use Spryker\Zed\ProductDiscontinuedStorage\Persistence\ProductDiscontinuedStorag
 class ProductDiscontinuedStorageListenerTest extends Unit
 {
     /**
-     * @var \SprykerTest\Zed\ProductDiscontinuedStorage\ProductDiscontinuedStorageBusinessTester
+     * @var \SprykerTest\Zed\ProductDiscontinuedStorage\ProductAlternativeStorageBusinessTester
      */
     protected $tester;
 
@@ -67,7 +67,7 @@ class ProductDiscontinuedStorageListenerTest extends Unit
         $this->productDiscontinuedStorageRepository = new ProductDiscontinuedStorageRepository();
 
         $this->productDiscontinuedStorageListener = new ProductDiscontinuedStorageListener();
-        $this->productDiscontinuedStorageListener->setFacade($this->tester->getFacade());
+        $this->productDiscontinuedStorageListener->setFacade($this->tester->getMockedFacade());
 
         $productConcrete = $this->tester->haveProduct();
         $productDiscontinuedRequestTransfer = (new ProductDiscontinueRequestTransfer())
@@ -81,9 +81,8 @@ class ProductDiscontinuedStorageListenerTest extends Unit
     /**
      * @return void
      */
-    public function testProductDiscontinuedStorageEntityCanBePublished()
+    public function testProductDiscontinuedStorageEntityCanBePublished(): void
     {
-        $this->markTestSkipped('No availability to skip entity transfer sending to Queue');
         // Arrange
         $eventTransfers = [
             (new EventEntityTransfer())->setId($this->productDiscontinuedTransfer->getIdProductDiscontinued()),
@@ -100,15 +99,14 @@ class ProductDiscontinuedStorageListenerTest extends Unit
             );
 
         // Assert
-        $this->assertCount(1, $productDiscontinuedEntityTransfers);
+        $this->assertCount(count($this->tester->getLocaleFacade()->getAvailableLocales()), $productDiscontinuedEntityTransfers);
     }
 
     /**
      * @return void
      */
-    public function testProductDiscontinuedStorageEntityCanBeUnpublished()
+    public function testProductDiscontinuedStorageEntityCanBeUnpublished(): void
     {
-        $this->markTestSkipped('No availability to skip entity transfer sending to Queue');
         // Arrange
         $eventTransfers = [
             (new EventEntityTransfer())->setId($this->productDiscontinuedTransfer->getIdProductDiscontinued()),

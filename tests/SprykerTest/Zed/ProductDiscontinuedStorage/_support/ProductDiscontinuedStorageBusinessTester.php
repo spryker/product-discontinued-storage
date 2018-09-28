@@ -8,7 +8,10 @@
 namespace SprykerTest\Zed\ProductDiscontinuedStorage;
 
 use Codeception\Actor;
+use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 use Spryker\Zed\ProductDiscontinued\Business\ProductDiscontinuedFacadeInterface;
+use Spryker\Zed\ProductDiscontinuedStorage\Business\ProductDiscontinuedStorageBusinessFactory;
+use Spryker\Zed\ProductDiscontinuedStorage\Business\ProductDiscontinuedStorageFacade;
 
 /**
  * Inherited Methods
@@ -22,6 +25,7 @@ use Spryker\Zed\ProductDiscontinued\Business\ProductDiscontinuedFacadeInterface;
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
+ * @method \Spryker\Zed\ProductDiscontinuedStorage\Business\ProductDiscontinuedStorageFacade getFacade()
  *
  * @SuppressWarnings(PHPMD)
  */
@@ -39,5 +43,27 @@ class ProductDiscontinuedStorageBusinessTester extends Actor
     public function getProductDiscontinuedFacade(): ProductDiscontinuedFacadeInterface
     {
         return $this->getLocator()->productDiscontinued()->facade();
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductDiscontinuedStorage\Business\ProductDiscontinuedStorageFacade
+     */
+    public function getMockedFacade(): ProductDiscontinuedStorageFacade
+    {
+        $factory = new ProductDiscontinuedStorageBusinessFactory();
+        $factory->setConfig(new ProductDiscontinuedStorageConfigMock());
+
+        $facade = $this->getFacade();
+        $facade->setFactory($factory);
+
+        return $facade;
+    }
+
+    /**
+     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
+     */
+    public function getLocaleFacade(): LocaleFacadeInterface
+    {
+        return $this->getLocator()->locale()->facade();
     }
 }
