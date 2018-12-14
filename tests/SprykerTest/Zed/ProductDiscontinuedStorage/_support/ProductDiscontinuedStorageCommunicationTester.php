@@ -12,6 +12,7 @@ use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 use Spryker\Zed\ProductDiscontinued\Business\ProductDiscontinuedFacadeInterface;
 use Spryker\Zed\ProductDiscontinuedStorage\Business\ProductDiscontinuedStorageBusinessFactory;
 use Spryker\Zed\ProductDiscontinuedStorage\Business\ProductDiscontinuedStorageFacade;
+use Spryker\Zed\ProductDiscontinuedStorage\Business\ProductDiscontinuedStorageFacadeInterface;
 
 /**
  * Inherited Methods
@@ -24,18 +25,18 @@ use Spryker\Zed\ProductDiscontinuedStorage\Business\ProductDiscontinuedStorageFa
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
+ * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = NULL)
  * @method \Spryker\Zed\ProductDiscontinuedStorage\Business\ProductDiscontinuedStorageFacade getFacade()
  *
  * @SuppressWarnings(PHPMD)
  */
-class ProductDiscontinuedStorageBusinessTester extends Actor
+class ProductDiscontinuedStorageCommunicationTester extends Actor
 {
-    use _generated\ProductDiscontinuedStorageBusinessTesterActions;
+    use _generated\ProductDiscontinuedStorageCommunicationTesterActions;
 
-    /**
-     * Define custom actions here
-     */
+   /**
+    * Define custom actions here
+    */
 
     /**
      * @return \Spryker\Zed\ProductDiscontinued\Business\ProductDiscontinuedFacadeInterface
