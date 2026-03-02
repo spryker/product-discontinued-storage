@@ -28,9 +28,6 @@ use Spryker\Client\ProductDiscontinuedStorage\Validator\ProductDiscontinuedItemV
  */
 class ProductDiscontinuedStorageFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\ProductDiscontinuedStorage\Storage\ProductDiscontinuedStorageReaderInterface
-     */
     public function createProductDiscontinuedStorageReader(): ProductDiscontinuedStorageReaderInterface
     {
         return new ProductDiscontinuedStorageReader(
@@ -39,9 +36,6 @@ class ProductDiscontinuedStorageFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ProductDiscontinuedStorage\ProductViewExpander\DiscontinuedSuperAttributesProductViewExpanderInterface
-     */
     public function createDiscontinuedSuperAttributesProductViewExpander(): DiscontinuedSuperAttributesProductViewExpanderInterface
     {
         return new DiscontinuedSuperAttributesProductViewExpander(
@@ -51,9 +45,6 @@ class ProductDiscontinuedStorageFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ProductDiscontinuedStorage\ProductDiscontinuedChecker\ProductDiscontinuedCheckerInterface
-     */
     public function createProductDiscontinuedChecker(): ProductDiscontinuedCheckerInterface
     {
         return new ProductDiscontinuedChecker(
@@ -61,9 +52,6 @@ class ProductDiscontinuedStorageFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ProductDiscontinuedStorage\ProductViewExpander\DiscontinuedAvailabilityProductViewExpanderInterface
-     */
     public function createDiscontinuedAvailabilityProductViewExpander(): DiscontinuedAvailabilityProductViewExpanderInterface
     {
         return new DiscontinuedAvailabilityProductViewExpander(
@@ -71,9 +59,6 @@ class ProductDiscontinuedStorageFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ProductDiscontinuedStorage\Validator\ProductDiscontinuedItemValidatorInterface
-     */
     public function createProductDiscontinuedItemValidator(): ProductDiscontinuedItemValidatorInterface
     {
         return new ProductDiscontinuedItemValidator(
@@ -82,33 +67,21 @@ class ProductDiscontinuedStorageFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\ProductDiscontinuedStorage\Dependency\Client\ProductDiscontinuedStorageToGlossaryStorageClientInterface
-     */
     public function getGlossaryStorageClient(): ProductDiscontinuedStorageToGlossaryStorageClientInterface
     {
         return $this->getProvidedDependency(ProductDiscontinuedStorageDependencyProvider::CLIENT_GLOSSARY_STORAGE);
     }
 
-    /**
-     * @return \Spryker\Client\ProductDiscontinuedStorage\Dependency\Client\ProductDiscontinuedStorageToLocaleClientInterface
-     */
     public function getLocaleClient(): ProductDiscontinuedStorageToLocaleClientInterface
     {
         return $this->getProvidedDependency(ProductDiscontinuedStorageDependencyProvider::CLIENT_LOCALE);
     }
 
-    /**
-     * @return \Spryker\Client\ProductDiscontinuedStorage\Dependency\Client\ProductDiscontinuedStorageToStorageClientInterface
-     */
     public function getStorageClient(): ProductDiscontinuedStorageToStorageClientInterface
     {
         return $this->getProvidedDependency(ProductDiscontinuedStorageDependencyProvider::CLIENT_STORAGE);
     }
 
-    /**
-     * @return \Spryker\Client\ProductDiscontinuedStorage\Dependency\Service\ProductDiscontinuedStorageToSynchronizationServiceInterface
-     */
     public function getSynchronizationService(): ProductDiscontinuedStorageToSynchronizationServiceInterface
     {
         return $this->getProvidedDependency(ProductDiscontinuedStorageDependencyProvider::SERVICE_SYNCHRONIZATION);

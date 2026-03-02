@@ -38,11 +38,6 @@ class ProductDiscontinuedStorageEventSubscriber extends AbstractPlugin implement
         return $eventCollection;
     }
 
-    /**
-     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
-     *
-     * @return void
-     */
     protected function addProductDiscontinuedListeners(EventCollectionInterface $eventCollection): void
     {
         $this->addProductDiscontinuedPublishListener($eventCollection);
@@ -52,11 +47,6 @@ class ProductDiscontinuedStorageEventSubscriber extends AbstractPlugin implement
         $this->addProductDiscontinuedDeleteListener($eventCollection);
     }
 
-    /**
-     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
-     *
-     * @return void
-     */
     protected function addProductDiscontinuedNoteListeners(EventCollectionInterface $eventCollection): void
     {
         $this->addProductDiscontinuedNoteCreateListener($eventCollection);
@@ -64,88 +54,48 @@ class ProductDiscontinuedStorageEventSubscriber extends AbstractPlugin implement
         $this->addProductDiscontinuedNoteDeleteListener($eventCollection);
     }
 
-    /**
-     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
-     *
-     * @return void
-     */
     protected function addProductDiscontinuedPublishListener(EventCollectionInterface $eventCollection): void
     {
         $eventCollection
             ->addListenerQueued(ProductDiscontinuedStorageConfig::PRODUCT_DISCONTINUED_PUBLISH, new ProductDiscontinuedStoragePublishListener(), 0, null, $this->getConfig()->getEventQueueName());
     }
 
-    /**
-     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
-     *
-     * @return void
-     */
     protected function addProductDiscontinuedUnpublishListener(EventCollectionInterface $eventCollection): void
     {
         $eventCollection
             ->addListenerQueued(ProductDiscontinuedEvents::PRODUCT_DISCONTINUED_UNPUBLISH, new ProductDiscontinuedStorageUnpublishListener(), 0, null, $this->getConfig()->getEventQueueName());
     }
 
-    /**
-     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
-     *
-     * @return void
-     */
     protected function addProductDiscontinuedCreateListener(EventCollectionInterface $eventCollection): void
     {
         $eventCollection
             ->addListenerQueued(ProductDiscontinuedEvents::ENTITY_SPY_PRODUCT_DISCONTINUED_CREATE, new ProductDiscontinuedStoragePublishListener(), 0, null, $this->getConfig()->getEventQueueName());
     }
 
-    /**
-     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
-     *
-     * @return void
-     */
     protected function addProductDiscontinuedUpdateListener(EventCollectionInterface $eventCollection): void
     {
         $eventCollection
             ->addListenerQueued(ProductDiscontinuedEvents::ENTITY_SPY_PRODUCT_DISCONTINUED_UPDATE, new ProductDiscontinuedStoragePublishListener(), 0, null, $this->getConfig()->getEventQueueName());
     }
 
-    /**
-     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
-     *
-     * @return void
-     */
     protected function addProductDiscontinuedDeleteListener(EventCollectionInterface $eventCollection): void
     {
         $eventCollection
             ->addListenerQueued(ProductDiscontinuedEvents::ENTITY_SPY_PRODUCT_DISCONTINUED_DELETE, new ProductDiscontinuedStorageUnpublishListener(), 0, null, $this->getConfig()->getEventQueueName());
     }
 
-    /**
-     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
-     *
-     * @return void
-     */
     protected function addProductDiscontinuedNoteCreateListener(EventCollectionInterface $eventCollection): void
     {
         $eventCollection
             ->addListenerQueued(ProductDiscontinuedEvents::ENTITY_SPY_PRODUCT_DISCONTINUED_NOTE_CREATE, new ProductDiscontinuedNoteStorageListener(), 0, null, $this->getConfig()->getEventQueueName());
     }
 
-    /**
-     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
-     *
-     * @return void
-     */
     protected function addProductDiscontinuedNoteUpdateListener(EventCollectionInterface $eventCollection): void
     {
         $eventCollection
             ->addListenerQueued(ProductDiscontinuedEvents::ENTITY_SPY_PRODUCT_DISCONTINUED_NOTE_UPDATE, new ProductDiscontinuedNoteStorageListener(), 0, null, $this->getConfig()->getEventQueueName());
     }
 
-    /**
-     * @param \Spryker\Zed\Event\Dependency\EventCollectionInterface $eventCollection
-     *
-     * @return void
-     */
     protected function addProductDiscontinuedNoteDeleteListener(EventCollectionInterface $eventCollection): void
     {
         $eventCollection

@@ -25,11 +25,6 @@ class ProductDiscontinuedStorageToProductDiscontinuedFacadeBridge implements Pro
         $this->productDiscontinuedFacade = $productDiscontinuedFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductDiscontinuedCriteriaTransfer $productDiscontinuedCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductDiscontinuedCollectionTransfer
-     */
     public function getProductDiscontinuedCollection(
         ProductDiscontinuedCriteriaTransfer $productDiscontinuedCriteriaTransfer
     ): ProductDiscontinuedCollectionTransfer {

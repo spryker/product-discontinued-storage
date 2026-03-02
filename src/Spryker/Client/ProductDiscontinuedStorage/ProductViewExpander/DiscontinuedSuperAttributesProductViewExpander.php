@@ -50,11 +50,6 @@ class DiscontinuedSuperAttributesProductViewExpander implements DiscontinuedSupe
      */
     protected ProductDiscontinuedStorageConfig $productDiscontinuedStorageConfig;
 
-    /**
-     * @param \Spryker\Client\ProductDiscontinuedStorage\Storage\ProductDiscontinuedStorageReaderInterface $productDiscontinuedStorageReader
-     * @param \Spryker\Client\ProductDiscontinuedStorage\Dependency\Client\ProductDiscontinuedStorageToGlossaryStorageClientInterface $glossaryStorageClient
-     * @param \Spryker\Client\ProductDiscontinuedStorage\ProductDiscontinuedStorageConfig $productDiscontinuedStorageConfig
-     */
     public function __construct(
         ProductDiscontinuedStorageReaderInterface $productDiscontinuedStorageReader,
         ProductDiscontinuedStorageToGlossaryStorageClientInterface $glossaryStorageClient,
@@ -65,12 +60,6 @@ class DiscontinuedSuperAttributesProductViewExpander implements DiscontinuedSupe
         $this->productDiscontinuedStorageConfig = $productDiscontinuedStorageConfig;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\ProductViewTransfer
-     */
     public function expandDiscontinuedProductSuperAttributes(ProductViewTransfer $productViewTransfer, string $localeName): ProductViewTransfer
     {
         if (!$productViewTransfer->getAttributeMap()) {
@@ -125,12 +114,6 @@ class DiscontinuedSuperAttributesProductViewExpander implements DiscontinuedSupe
         $attributeMapStorageTransfer->setAttributeVariants($attributeVariants);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\ProductViewTransfer
-     */
     protected function expandProductAttributeValuesWithDiscontinuedPostfix(
         ProductViewTransfer $productViewTransfer,
         string $localeName
@@ -182,11 +165,6 @@ class DiscontinuedSuperAttributesProductViewExpander implements DiscontinuedSupe
         return $productViewTransfer;
     }
 
-    /**
-     * @param bool $isWholeAttributeVariantSelected
-     *
-     * @return bool
-     */
     protected function isDiscontinuedPostfixApplicableForSuperAttributes(bool $isWholeAttributeVariantSelected): bool
     {
         return !$this->productDiscontinuedStorageConfig->isOnlyDiscontinuedVariantAttributesPostfixEnabled()
@@ -255,12 +233,6 @@ class DiscontinuedSuperAttributesProductViewExpander implements DiscontinuedSupe
         return $newSuperAttributes;
     }
 
-    /**
-     * @param string $attributeKey
-     * @param string $attributeName
-     *
-     * @return string
-     */
     protected function getAttributeValueKey(string $attributeKey, string $attributeName): string
     {
         return sprintf(
@@ -283,24 +255,11 @@ class DiscontinuedSuperAttributesProductViewExpander implements DiscontinuedSupe
         return $attributeMapStorageTransfer->getAttributeVariants()[$attributeValueKey][static::ID_PRODUCT_CONCRETE] ?? null;
     }
 
-    /**
-     * @param int $idProductConcrete
-     * @param \Generated\Shared\Transfer\AttributeMapStorageTransfer $attributeMapStorageTransfer
-     *
-     * @return string
-     */
     protected function getSkuByIdProductConcrete(int $idProductConcrete, AttributeMapStorageTransfer $attributeMapStorageTransfer): string
     {
         return (string)array_search($idProductConcrete, $attributeMapStorageTransfer->getProductConcreteIds());
     }
 
-    /**
-     * @param string $value
-     * @param string $sku
-     * @param string $localeName
-     *
-     * @return string
-     */
     protected function expandAttributeName(string $value, string $sku, string $localeName): string
     {
         if ($this->productDiscontinuedStorageReader->findProductDiscontinuedStorage($sku, $localeName)) {

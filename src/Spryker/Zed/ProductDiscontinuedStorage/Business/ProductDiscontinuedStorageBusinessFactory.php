@@ -23,9 +23,6 @@ use Spryker\Zed\ProductDiscontinuedStorage\ProductDiscontinuedStorageDependencyP
  */
 class ProductDiscontinuedStorageBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\ProductDiscontinuedStorage\Business\ProductDiscontinuedPublisher\ProductDiscontinuedPublisherInterface
-     */
     public function createProductDiscontinuedPublisher(): ProductDiscontinuedPublisherInterface
     {
         return new ProductDiscontinuedPublisher(
@@ -37,9 +34,6 @@ class ProductDiscontinuedStorageBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductDiscontinuedStorage\Business\ProductDiscontinuedUnpublisher\ProductDiscontinuedUnpublisherInterface
-     */
     public function createProductDiscontinuedUnpublisher(): ProductDiscontinuedUnpublisherInterface
     {
         return new ProductDiscontinuedUnpublisher(
@@ -48,17 +42,11 @@ class ProductDiscontinuedStorageBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductDiscontinuedStorage\Dependency\Facade\ProductDiscontinuedStorageToProductDiscontinuedFacadeInterface
-     */
     public function getProductDiscontinuedFacade(): ProductDiscontinuedStorageToProductDiscontinuedFacadeInterface
     {
         return $this->getProvidedDependency(ProductDiscontinuedStorageDependencyProvider::FACADE_PRODUCT_DISCONTINUED);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductDiscontinuedStorage\Dependency\Facade\ProductDiscontinuedStorageToLocaleFacadeInterface
-     */
     public function getLocaleFacade(): ProductDiscontinuedStorageToLocaleFacadeInterface
     {
         return $this->getProvidedDependency(ProductDiscontinuedStorageDependencyProvider::FACADE_LOCALE);

@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\ItemValidationTransfer;
 
 interface ProductDiscontinuedItemValidatorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ItemValidationTransfer $itemValidationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ItemValidationTransfer
-     */
     public function validate(ItemValidationTransfer $itemValidationTransfer): ItemValidationTransfer;
 }

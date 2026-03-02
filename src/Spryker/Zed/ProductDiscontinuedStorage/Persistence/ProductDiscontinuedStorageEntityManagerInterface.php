@@ -11,17 +11,7 @@ use Orm\Zed\ProductDiscontinuedStorage\Persistence\SpyProductDiscontinuedStorage
 
 interface ProductDiscontinuedStorageEntityManagerInterface
 {
-    /**
-     * @param \Orm\Zed\ProductDiscontinuedStorage\Persistence\SpyProductDiscontinuedStorage $productDiscontinuedStorageEntity
-     *
-     * @return void
-     */
     public function saveProductDiscontinuedStorageEntity(SpyProductDiscontinuedStorage $productDiscontinuedStorageEntity): void;
 
-    /**
-     * @param \Orm\Zed\ProductDiscontinuedStorage\Persistence\SpyProductDiscontinuedStorage $productDiscontinuedStorageEntity
-     *
-     * @return void
-     */
     public function deleteProductDiscontinuedStorageEntity(SpyProductDiscontinuedStorage $productDiscontinuedStorageEntity): void;
 }

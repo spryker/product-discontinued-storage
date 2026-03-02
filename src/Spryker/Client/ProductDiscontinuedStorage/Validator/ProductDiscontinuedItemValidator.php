@@ -34,10 +34,6 @@ class ProductDiscontinuedItemValidator implements ProductDiscontinuedItemValidat
      */
     protected $localeClient;
 
-    /**
-     * @param \Spryker\Client\ProductDiscontinuedStorage\Storage\ProductDiscontinuedStorageReaderInterface $productDiscontinuedStorageReader
-     * @param \Spryker\Client\ProductDiscontinuedStorage\Dependency\Client\ProductDiscontinuedStorageToLocaleClientInterface $localeClient
-     */
     public function __construct(
         ProductDiscontinuedStorageReaderInterface $productDiscontinuedStorageReader,
         ProductDiscontinuedStorageToLocaleClientInterface $localeClient
@@ -46,11 +42,6 @@ class ProductDiscontinuedItemValidator implements ProductDiscontinuedItemValidat
         $this->localeClient = $localeClient;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemValidationTransfer $itemValidationTransfer
-     *
-     * @return \Generated\Shared\Transfer\ItemValidationTransfer
-     */
     public function validate(ItemValidationTransfer $itemValidationTransfer): ItemValidationTransfer
     {
         $itemValidationTransfer->requireItem();

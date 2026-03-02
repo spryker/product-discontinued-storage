@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\ProductDiscontinuedCriteriaTransfer;
 
 interface ProductDiscontinuedStorageToProductDiscontinuedFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductDiscontinuedCriteriaTransfer $productDiscontinuedCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductDiscontinuedCollectionTransfer
-     */
     public function getProductDiscontinuedCollection(
         ProductDiscontinuedCriteriaTransfer $productDiscontinuedCriteriaTransfer
     ): ProductDiscontinuedCollectionTransfer;

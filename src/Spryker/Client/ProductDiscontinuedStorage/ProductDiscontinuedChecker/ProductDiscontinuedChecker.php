@@ -17,21 +17,12 @@ class ProductDiscontinuedChecker implements ProductDiscontinuedCheckerInterface
      */
     protected $productDiscontinuedStorageReader;
 
-    /**
-     * @param \Spryker\Client\ProductDiscontinuedStorage\Storage\ProductDiscontinuedStorageReaderInterface $productDiscontinuedStorageReader
-     */
     public function __construct(
         ProductDiscontinuedStorageReaderInterface $productDiscontinuedStorageReader
     ) {
         $this->productDiscontinuedStorageReader = $productDiscontinuedStorageReader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
-     * @param string $localeName
-     *
-     * @return bool
-     */
     public function isProductDiscontinued(ProductViewTransfer $productViewTransfer, string $localeName): bool
     {
         if ($productViewTransfer->getIdProductConcrete()) {
@@ -41,23 +32,11 @@ class ProductDiscontinuedChecker implements ProductDiscontinuedCheckerInterface
         return $this->isProductAbstractDiscontinued($productViewTransfer, $localeName);
     }
 
-    /**
-     * @param string $concreteSku
-     * @param string $localeName
-     *
-     * @return bool
-     */
     protected function isProductConcreteDiscontinued(string $concreteSku, string $localeName): bool
     {
         return (bool)$this->productDiscontinuedStorageReader->findProductDiscontinuedStorage($concreteSku, $localeName);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
-     * @param string $localeName
-     *
-     * @return bool
-     */
     protected function isProductAbstractDiscontinued(ProductViewTransfer $productViewTransfer, string $localeName): bool
     {
         $attributeMap = $productViewTransfer->getAttributeMap();

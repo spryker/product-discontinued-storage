@@ -22,10 +22,6 @@ class ProductDiscontinuedUnpublisher implements ProductDiscontinuedUnpublisherIn
      */
     protected $productDiscontinuedStorageRepository;
 
-    /**
-     * @param \Spryker\Zed\ProductDiscontinuedStorage\Persistence\ProductDiscontinuedStorageEntityManagerInterface $discontinuedStorageEntityManager
-     * @param \Spryker\Zed\ProductDiscontinuedStorage\Persistence\ProductDiscontinuedStorageRepositoryInterface $productDiscontinuedStorageRepository
-     */
     public function __construct(
         ProductDiscontinuedStorageEntityManagerInterface $discontinuedStorageEntityManager,
         ProductDiscontinuedStorageRepositoryInterface $productDiscontinuedStorageRepository

@@ -34,17 +34,11 @@ class ProductDiscontinuedStorageCommunicationTester extends Actor
 {
     use _generated\ProductDiscontinuedStorageCommunicationTesterActions;
 
-    /**
-     * @return \Spryker\Zed\ProductDiscontinued\Business\ProductDiscontinuedFacadeInterface
-     */
     public function getProductDiscontinuedFacade(): ProductDiscontinuedFacadeInterface
     {
         return $this->getLocator()->productDiscontinued()->facade();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductDiscontinuedStorage\Business\ProductDiscontinuedStorageFacade
-     */
     public function getMockedFacade(): ProductDiscontinuedStorageFacade
     {
         $factory = new ProductDiscontinuedStorageBusinessFactory();
@@ -56,17 +50,11 @@ class ProductDiscontinuedStorageCommunicationTester extends Actor
         return $facade;
     }
 
-    /**
-     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
-     */
     public function getLocaleFacade(): LocaleFacadeInterface
     {
         return $this->getLocator()->locale()->facade();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ProductDiscontinuedTransfer|null
-     */
     public function createProductDiscontinued(): ?ProductDiscontinuedTransfer
     {
         $productConcrete = $this->haveProduct();

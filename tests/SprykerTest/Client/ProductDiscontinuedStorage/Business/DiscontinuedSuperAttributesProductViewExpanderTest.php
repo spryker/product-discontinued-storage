@@ -96,9 +96,6 @@ class DiscontinuedSuperAttributesProductViewExpanderTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testExpandDiscontinuedProductSuperAttributesWithDiscontinuedProduct(): void
     {
         // Arrange
@@ -135,9 +132,6 @@ class DiscontinuedSuperAttributesProductViewExpanderTest extends Unit
         $this->assertSame(['memory' => ['4 GB', '8 GB - Discontinued']], $superAttributes);
     }
 
-    /**
-     * @return void
-     */
     public function testExpandDiscontinuedProductSuperAttributesWithDiscontinuedProductBackwardCompatibilityCheck(): void
     {
         // Arrange
@@ -176,9 +170,6 @@ class DiscontinuedSuperAttributesProductViewExpanderTest extends Unit
         $this->assertSame(['memory' => ['4 GB', '8 GB - Discontinued']], $superAttributes);
     }
 
-    /**
-     * @return void
-     */
     public function testExpandDiscontinuedProductSuperAttributesWithoutDiscontinuedProduct(): void
     {
         // Arrange
@@ -215,9 +206,6 @@ class DiscontinuedSuperAttributesProductViewExpanderTest extends Unit
         $this->assertSame(['memory' => ['4 GB', '8 GB']], $superAttributes);
     }
 
-    /**
-     * @return void
-     */
     public function testExpandRemainingProductAttributeValueWithDiscontinuedPostfixIfOnlyDiscontinuedVariantAttributesPostfixEnabled(): void
     {
         // Arrange
@@ -267,9 +255,6 @@ class DiscontinuedSuperAttributesProductViewExpanderTest extends Unit
         $this->assertSame(['color' => 'black'], $productViewTransfer->getSelectedAttributes());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandProductAttributeValueWithDiscontinuedPostfixIfWholeAttributeVariantIsSelected(): void
     {
         // Arrange
@@ -320,9 +305,6 @@ class DiscontinuedSuperAttributesProductViewExpanderTest extends Unit
         $this->assertSame(['color' => 'black - Discontinued', 'memory' => '8 GB - Discontinued'], $selectedAttributes);
     }
 
-    /**
-     * @return void
-     */
     public function testExpandDiscontinuedProductSuperAttributesEnsureThatSelectedAttributesNotOverridden(): void
     {
         // Arrange
@@ -358,9 +340,6 @@ class DiscontinuedSuperAttributesProductViewExpanderTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testExpandDiscontinuedProductSuperAttributesEnsureThatSelectedAttributesNotOverriddenByDiscontinuedValues(): void
     {
         // Arrange

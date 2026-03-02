@@ -11,11 +11,5 @@ use Generated\Shared\Transfer\ProductViewTransfer;
 
 interface ProductDiscontinuedCheckerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
-     * @param string $localeName
-     *
-     * @return bool
-     */
     public function isProductDiscontinued(ProductViewTransfer $productViewTransfer, string $localeName): bool;
 }

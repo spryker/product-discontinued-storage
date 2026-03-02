@@ -15,21 +15,11 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class ProductDiscontinuedStorageEntityManager extends AbstractEntityManager implements ProductDiscontinuedStorageEntityManagerInterface
 {
-    /**
-     * @param \Orm\Zed\ProductDiscontinuedStorage\Persistence\SpyProductDiscontinuedStorage $productDiscontinuedStorageEntity
-     *
-     * @return void
-     */
     public function saveProductDiscontinuedStorageEntity(SpyProductDiscontinuedStorage $productDiscontinuedStorageEntity): void
     {
         $productDiscontinuedStorageEntity->save();
     }
 
-    /**
-     * @param \Orm\Zed\ProductDiscontinuedStorage\Persistence\SpyProductDiscontinuedStorage $productDiscontinuedStorageEntity
-     *
-     * @return void
-     */
     public function deleteProductDiscontinuedStorageEntity(SpyProductDiscontinuedStorage $productDiscontinuedStorageEntity): void
     {
         $productDiscontinuedStorageEntity->delete();

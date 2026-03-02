@@ -31,10 +31,6 @@ class ProductDiscontinuedStorageReader implements ProductDiscontinuedStorageRead
      */
     protected static $storageKeyBuilder;
 
-    /**
-     * @param \Spryker\Client\ProductDiscontinuedStorage\Dependency\Client\ProductDiscontinuedStorageToStorageClientInterface $storageClient
-     * @param \Spryker\Client\ProductDiscontinuedStorage\Dependency\Service\ProductDiscontinuedStorageToSynchronizationServiceInterface $synchronizationService
-     */
     public function __construct(
         ProductDiscontinuedStorageToStorageClientInterface $storageClient,
         ProductDiscontinuedStorageToSynchronizationServiceInterface $synchronizationService
@@ -43,12 +39,6 @@ class ProductDiscontinuedStorageReader implements ProductDiscontinuedStorageRead
         $this->synchronizationService = $synchronizationService;
     }
 
-    /**
-     * @param string $concreteSku
-     * @param string $locale
-     *
-     * @return \Generated\Shared\Transfer\ProductDiscontinuedStorageTransfer|null
-     */
     public function findProductDiscontinuedStorage(string $concreteSku, string $locale): ?ProductDiscontinuedStorageTransfer
     {
         $key = $this->generateKey($concreteSku, $locale);
@@ -61,23 +51,12 @@ class ProductDiscontinuedStorageReader implements ProductDiscontinuedStorageRead
         return $this->mapToProductDiscontinuedStorage($productDiscontinuedStorageData);
     }
 
-    /**
-     * @param array $productDiscontinuedStorageData
-     *
-     * @return \Generated\Shared\Transfer\ProductDiscontinuedStorageTransfer
-     */
     protected function mapToProductDiscontinuedStorage(array $productDiscontinuedStorageData): ProductDiscontinuedStorageTransfer
     {
         return (new ProductDiscontinuedStorageTransfer())
             ->fromArray($productDiscontinuedStorageData, true);
     }
 
-    /**
-     * @param string $concreteSku
-     * @param string $locale
-     *
-     * @return string
-     */
     protected function generateKey(string $concreteSku, string $locale): string
     {
         $synchronizationDataTransfer = (new SynchronizationDataTransfer())
@@ -87,9 +66,6 @@ class ProductDiscontinuedStorageReader implements ProductDiscontinuedStorageRead
         return $this->getStorageKeyBuilder()->generateKey($synchronizationDataTransfer);
     }
 
-    /**
-     * @return \Spryker\Service\Synchronization\Dependency\Plugin\SynchronizationKeyGeneratorPluginInterface
-     */
     protected function getStorageKeyBuilder(): SynchronizationKeyGeneratorPluginInterface
     {
         if (static::$storageKeyBuilder === null) {

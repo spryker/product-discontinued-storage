@@ -11,11 +11,5 @@ use Generated\Shared\Transfer\ProductViewTransfer;
 
 interface DiscontinuedAvailabilityProductViewExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\ProductViewTransfer
-     */
     public function expandProductVew(ProductViewTransfer $productViewTransfer, string $localeName): ProductViewTransfer;
 }

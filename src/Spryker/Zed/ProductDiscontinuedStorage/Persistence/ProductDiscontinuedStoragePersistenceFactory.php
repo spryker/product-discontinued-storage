@@ -17,9 +17,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
  */
 class ProductDiscontinuedStoragePersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\ProductDiscontinuedStorage\Persistence\SpyProductDiscontinuedStorageQuery
-     */
     public function createProductDiscontinuedStoragePropelQuery(): SpyProductDiscontinuedStorageQuery
     {
         return SpyProductDiscontinuedStorageQuery::create();

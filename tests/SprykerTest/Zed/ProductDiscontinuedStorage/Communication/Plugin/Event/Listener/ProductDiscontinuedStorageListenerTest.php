@@ -51,9 +51,6 @@ class ProductDiscontinuedStorageListenerTest extends Unit
      */
     protected $productDiscontinuedTransfer;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -66,9 +63,6 @@ class ProductDiscontinuedStorageListenerTest extends Unit
         $this->productDiscontinuedTransfer = $this->tester->createProductDiscontinued();
     }
 
-    /**
-     * @return void
-     */
     public function testProductDiscontinuedStorageEntityCanBePublished(): void
     {
         // Arrange
@@ -90,9 +84,6 @@ class ProductDiscontinuedStorageListenerTest extends Unit
         $this->assertCount(count($this->tester->getLocaleFacade()->getAvailableLocales()), $productDiscontinuedEntityTransfers);
     }
 
-    /**
-     * @return void
-     */
     public function testProductDiscontinuedStorageEntityCanBeUnpublished(): void
     {
         // Arrange
@@ -118,9 +109,6 @@ class ProductDiscontinuedStorageListenerTest extends Unit
         $this->assertCount(0, $productDiscontinuedEntityTransfers);
     }
 
-    /**
-     * @return void
-     */
     public function testProductDiscontinuedStorageEntityPublish(): void
     {
         $this->markTestSkipped('No availability to skip entity transfer sending to Queue');
@@ -148,9 +136,6 @@ class ProductDiscontinuedStorageListenerTest extends Unit
         $this->assertCount(1, $productDiscontinuedEntityTransfers);
     }
 
-    /**
-     * @return void
-     */
     public function testProductDiscontinuedStorageEntityUnpublish(): void
     {
         $this->markTestSkipped('No availability to skip entity transfer sending to Queue');

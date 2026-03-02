@@ -17,20 +17,11 @@ class DiscontinuedAvailabilityProductViewExpander implements DiscontinuedAvailab
      */
     protected $productDiscontinuedStorageReader;
 
-    /**
-     * @param \Spryker\Client\ProductDiscontinuedStorage\Storage\ProductDiscontinuedStorageReaderInterface $productDiscontinuedStorageReader
-     */
     public function __construct(ProductDiscontinuedStorageReaderInterface $productDiscontinuedStorageReader)
     {
         $this->productDiscontinuedStorageReader = $productDiscontinuedStorageReader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\ProductViewTransfer
-     */
     public function expandProductVew(ProductViewTransfer $productViewTransfer, string $localeName): ProductViewTransfer
     {
         $productDiscontinuedTransfer = $this->productDiscontinuedStorageReader

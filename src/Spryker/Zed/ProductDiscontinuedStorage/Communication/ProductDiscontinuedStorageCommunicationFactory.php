@@ -22,25 +22,16 @@ use Spryker\Zed\ProductDiscontinuedStorage\ProductDiscontinuedStorageDependencyP
  */
 class ProductDiscontinuedStorageCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Zed\ProductDiscontinuedStorage\Dependency\Facade\ProductDiscontinuedStorageToEventBehaviorFacadeInterface
-     */
     public function getEventBehaviorFacade(): ProductDiscontinuedStorageToEventBehaviorFacadeInterface
     {
         return $this->getProvidedDependency(ProductDiscontinuedStorageDependencyProvider::FACADE_EVENT_BEHAVIOR);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductDiscontinuedStorage\Communication\ProductDiscontinueStorageMapper\ProductDiscontinuedStorageMapperInterface
-     */
     public function createProductDiscontinuedStorageMapper(): ProductDiscontinuedStorageMapperInterface
     {
         return new ProductDiscontinuedStorageMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductDiscontinuedStorage\Dependency\Facade\ProductDiscontinuedStorageToProductDiscontinuedFacadeInterface
-     */
     public function getProductDiscontinuedFacade(): ProductDiscontinuedStorageToProductDiscontinuedFacadeInterface
     {
         return $this->getProvidedDependency(ProductDiscontinuedStorageDependencyProvider::FACADE_PRODUCT_DISCONTINUED);

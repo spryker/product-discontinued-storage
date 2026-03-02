@@ -84,12 +84,6 @@ class ProductDiscontinuedPublisherTriggerPlugin extends AbstractPlugin implement
         return static::COL_ID_PRODUCT_DISCONTINUED;
     }
 
-    /**
-     * @param int $offset
-     * @param int $limit
-     *
-     * @return \Generated\Shared\Transfer\ProductDiscontinuedCriteriaTransfer
-     */
     protected function createProductDiscontinuedCriteriaTransfer(int $offset, int $limit): ProductDiscontinuedCriteriaTransfer
     {
         return (new ProductDiscontinuedCriteriaTransfer())

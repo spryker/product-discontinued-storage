@@ -47,13 +47,6 @@ class ProductDiscontinuedPublisher implements ProductDiscontinuedPublisherInterf
      */
     protected $productDiscontinuedStorageConfig;
 
-    /**
-     * @param \Spryker\Zed\ProductDiscontinuedStorage\Persistence\ProductDiscontinuedStorageEntityManagerInterface $productDiscontinuedStorageEntityManager
-     * @param \Spryker\Zed\ProductDiscontinuedStorage\Persistence\ProductDiscontinuedStorageRepositoryInterface $productDiscontinuedStorageRepository
-     * @param \Spryker\Zed\ProductDiscontinuedStorage\Dependency\Facade\ProductDiscontinuedStorageToProductDiscontinuedFacadeInterface $productDiscontinuedFacade
-     * @param \Spryker\Zed\ProductDiscontinuedStorage\Dependency\Facade\ProductDiscontinuedStorageToLocaleFacadeInterface $localeFacade
-     * @param \Spryker\Zed\ProductDiscontinuedStorage\ProductDiscontinuedStorageConfig $productDiscontinuedStorageConfig
-     */
     public function __construct(
         ProductDiscontinuedStorageEntityManagerInterface $productDiscontinuedStorageEntityManager,
         ProductDiscontinuedStorageRepositoryInterface $productDiscontinuedStorageRepository,
@@ -129,13 +122,6 @@ class ProductDiscontinuedPublisher implements ProductDiscontinuedPublisherInterf
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductDiscontinuedTransfer $productDiscontinuedTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     * @param \Orm\Zed\ProductDiscontinuedStorage\Persistence\SpyProductDiscontinuedStorage $productDiscontinuedStorage
-     *
-     * @return void
-     */
     protected function storeDataSet(
         ProductDiscontinuedTransfer $productDiscontinuedTransfer,
         LocaleTransfer $localeTransfer,
@@ -193,12 +179,6 @@ class ProductDiscontinuedPublisher implements ProductDiscontinuedPublisherInterf
         return $indexProductDiscontinuedStorageEntities;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductDiscontinuedTransfer $productDiscontinuedTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductDiscontinuedStorageTransfer
-     */
     protected function mapToProductDiscontinuedStorageTransfer(
         ProductDiscontinuedTransfer $productDiscontinuedTransfer,
         LocaleTransfer $localeTransfer
@@ -208,12 +188,6 @@ class ProductDiscontinuedPublisher implements ProductDiscontinuedPublisherInterf
             ->setNote($this->getLocalizedNote($productDiscontinuedTransfer, $localeTransfer));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductDiscontinuedTransfer $productDiscontinuedTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return string
-     */
     protected function getLocalizedNote(
         ProductDiscontinuedTransfer $productDiscontinuedTransfer,
         LocaleTransfer $localeTransfer

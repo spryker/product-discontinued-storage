@@ -49,9 +49,6 @@ class ProductDiscontinuedNoteStorageListenerTest extends Unit
      */
     protected $productDiscontinuedTransfer;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -64,9 +61,6 @@ class ProductDiscontinuedNoteStorageListenerTest extends Unit
         $this->productDiscontinuedTransfer = $this->tester->createProductDiscontinued();
     }
 
-    /**
-     * @return void
-     */
     public function testHandleBulkProductDiscontinuedStorageEntityCanBePublished(): void
     {
         // Arrange
