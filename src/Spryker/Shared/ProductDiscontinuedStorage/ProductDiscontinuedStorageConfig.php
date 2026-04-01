@@ -50,4 +50,14 @@ class ProductDiscontinuedStorageConfig extends AbstractBundleConfig
      * @var string
      */
     public const PRODUCT_DISCONTINUED_PUBLISH = 'ProductDiscontinued.product_discontinued.publish';
+
+    /**
+     * Specification:
+     * - Queue name used for product discontinued publish events.
+     *
+     * @api
+     *
+     * @var string
+     */
+    public const string PUBLISH_PRODUCT_DISCONTINUED_QUEUE = 'publish.product_discontinued';
 }
