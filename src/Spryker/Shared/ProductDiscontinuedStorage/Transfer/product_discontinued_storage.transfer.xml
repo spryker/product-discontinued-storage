@@ -48,6 +48,7 @@
     <transfer name="ProductDiscontinuedCriteria" strict="true">
         <property name="pagination" type="Pagination"/>
         <property name="productDiscontinuedConditions" type="ProductDiscontinuedConditions"/>
+        <property name="withProductDiscontiniuedNotes" type="bool"/>
     </transfer>
 
     <transfer name="ProductDiscontinuedConditions" strict="true">

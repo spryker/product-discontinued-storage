@@ -9,6 +9,7 @@ namespace SprykerTest\Zed\ProductDiscontinuedStorage\Communication\Plugin\Event\
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\EventEntityTransfer;
+use Generated\Shared\Transfer\ProductDiscontinuedNoteTransfer;
 use Orm\Zed\ProductDiscontinued\Persistence\Map\SpyProductDiscontinuedNoteTableMap;
 use Spryker\Zed\ProductDiscontinued\Dependency\ProductDiscontinuedEvents;
 use Spryker\Zed\ProductDiscontinuedStorage\Communication\Plugin\Event\Listener\ProductDiscontinuedNoteStorageListener;
@@ -29,6 +30,10 @@ use Spryker\Zed\ProductDiscontinuedStorage\Persistence\ProductDiscontinuedStorag
  */
 class ProductDiscontinuedNoteStorageListenerTest extends Unit
 {
+    protected const string NOTE = 'Replaced by the next model.';
+
+    protected const string STORAGE_DATA_KEY_NOTE = 'note';
+
     /**
      * @var \SprykerTest\Zed\ProductDiscontinuedStorage\ProductDiscontinuedStorageCommunicationTester
      */
@@ -82,5 +87,36 @@ class ProductDiscontinuedNoteStorageListenerTest extends Unit
 
         // Assert
         $this->assertCount(count($this->tester->getLocaleFacade()->getAvailableLocales()), $productDiscontinuedEntityTransfers);
+    }
+
+    public function testGivenADiscontinuedProductWithANoteWhenTheNoteIsPublishedThenTheStoredDataCarriesTheNoteForItsLocale(): void
+    {
+        // Arrange
+        $localeFacade = $this->tester->getLocaleFacade();
+        $localeTransfer = $localeFacade->getLocale((string)current($localeFacade->getAvailableLocales()));
+        $this->tester->getProductDiscontinuedFacade()->saveDiscontinuedNote(
+            (new ProductDiscontinuedNoteTransfer())
+                ->setFkProductDiscontinued($this->productDiscontinuedTransfer->getIdProductDiscontinued())
+                ->setFkLocale($localeTransfer->getIdLocale())
+                ->setNote(static::NOTE),
+        );
+        $eventTransfers = [
+            (new EventEntityTransfer())->setForeignKeys([
+                SpyProductDiscontinuedNoteTableMap::COL_FK_PRODUCT_DISCONTINUED => $this->productDiscontinuedTransfer->getIdProductDiscontinued(),
+            ]),
+        ];
+
+        // Act
+        $this->productDiscontinuedNoteStorageListener->handleBulk(
+            $eventTransfers,
+            ProductDiscontinuedEvents::ENTITY_SPY_PRODUCT_DISCONTINUED_NOTE_CREATE,
+        );
+
+        // Assert
+        $notesByLocale = [];
+        foreach ($this->productDiscontinuedStorageRepository->findProductDiscontinuedStorageEntitiesByIds([$this->productDiscontinuedTransfer->getIdProductDiscontinued()]) as $productDiscontinuedStorageEntity) {
+            $notesByLocale[$productDiscontinuedStorageEntity->getLocale()] = $productDiscontinuedStorageEntity->getData()[static::STORAGE_DATA_KEY_NOTE];
+        }
+        $this->assertSame(static::NOTE, $notesByLocale[$localeTransfer->getLocaleName()]);
     }
 }
